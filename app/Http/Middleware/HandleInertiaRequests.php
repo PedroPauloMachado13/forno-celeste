@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\Finance\BillNotificationService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -37,7 +38,18 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            //
+            'auth' => [
+                'user' => $request->user() ? [
+                    'name' => $request->user()->name,
+                    'email' => $request->user()->email,
+                ] : null,
+            ],
+            'flash' => [
+                'success' => fn () => $request->session()->get('success'),
+                'error' => fn () => $request->session()->get('error'),
+            ],
+            'bills_due_soon' => fn () => app(BillNotificationService::class)->getCounts()['due_soon'],
+            'bills_overdue' => fn () => app(BillNotificationService::class)->getCounts()['overdue'],
         ];
     }
 }

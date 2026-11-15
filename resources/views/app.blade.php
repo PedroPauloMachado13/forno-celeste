@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title inertia>{{ config('app.name', 'Forno Celeste') }}</title>
+        <link rel="icon" href="/images/logo.png" type="image/png">
         @routes
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @inertiaHead

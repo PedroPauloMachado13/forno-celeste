@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose:*)",
+      "Bash(curl:*)",
+      "Bash(git init:*)",
+      "Bash(git rm:*)",
+      "mcp__claude_ai_Google_Drive__read_file_content",
+      "mcp__claude_ai_Google_Drive__download_file_content",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "Bash(python3 -c \":*)",
+      "Bash(python3:*)",
+      "Bash(ls -t ~/Downloads/*.pdf)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)",
+      "Bash(pdf2svg:*)",
+      "Bash(sips:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.infinitepay.io)",
+      "WebFetch(domain:www.infinitepay.io)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "laravel-boost"
+  ]
+}

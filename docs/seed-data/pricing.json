@@ -1,0 +1,27 @@
+{
+  "pricing_config": {
+    "card_machine_fee_percent": 3.2,
+    "default_target_margin_percent": 55.0,
+    "total_fixed_costs_monthly": 3010.90,
+    "real_monthly_revenue": 6835.50
+  },
+  "pricing_scenarios": [
+    {"name": "Agressivo", "target_margin_percent": 45.0},
+    {"name": "Padrão", "target_margin_percent": 55.0},
+    {"name": "Premium", "target_margin_percent": 65.0}
+  ],
+  "pricing_formula": "suggested_price = cmv / (1 - target_margin - card_machine_fee)",
+  "products_pricing": [
+    {"product": "Cinnamon Puro", "cmv": 2.09, "current_price": 4.00, "cmv_percent": 52.3, "suggested_price": 5.00, "status": "Abaixo do sugerido"},
+    {"product": "Cinnamon Cream Cheese", "cmv": 3.43, "current_price": 5.00, "cmv_percent": 68.6, "suggested_price": 8.50, "status": "Abaixo do sugerido"},
+    {"product": "Cinnamon Doce de Leite", "cmv": 3.69, "current_price": 5.50, "cmv_percent": 67.1, "suggested_price": 9.00, "status": "Abaixo do sugerido"},
+    {"product": "Cinnamon Nutella", "cmv": 4.09, "current_price": 7.50, "cmv_percent": 54.5, "suggested_price": 10.00, "status": "Abaixo do sugerido"},
+    {"product": "Amanteigado Ninhotella", "cmv": 3.53, "current_price": 6.50, "cmv_percent": 54.3, "suggested_price": 8.50, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Classico", "cmv": 3.73, "current_price": 6.50, "cmv_percent": 57.4, "suggested_price": 9.00, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Red Velvet", "cmv": 4.66, "current_price": 9.50, "cmv_percent": 49.1, "suggested_price": 11.15, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Nutella", "cmv": 5.73, "current_price": 10.50, "cmv_percent": 54.6, "suggested_price": 13.71, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Ninhotella", "cmv": 6.00, "current_price": 12.00, "cmv_percent": 50.0, "suggested_price": 14.35, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Triplo Chocolate", "cmv": 6.72, "current_price": 14.00, "cmv_percent": 48.0, "suggested_price": 16.08, "status": "Abaixo do sugerido"},
+    {"product": "Cookie Choco Maracuja", "cmv": 7.36, "current_price": 12.00, "cmv_percent": 61.3, "suggested_price": 17.61, "status": "Abaixo do sugerido"}
+  ]
+}

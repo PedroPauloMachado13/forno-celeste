@@ -1,0 +1,125 @@
+<script setup>
+import { ref } from 'vue';
+import { Head, Link, router } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/AppLayout.vue';
+import DataTable from '@/Components/DataTable.vue';
+import DeleteConfirmModal from '@/Components/DeleteConfirmModal.vue';
+import FadeIn from '@/Components/FadeIn.vue';
+
+const props = defineProps({
+    holidays: Object,
+});
+
+const columns = [
+    { key: 'date', label: 'Data' },
+    { key: 'name', label: 'Nome' },
+    { key: 'was_open', label: 'Status', align: 'center' },
+    { key: 'actions', label: '', align: 'right' },
+];
+
+function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+}
+
+// Delete modal
+const showDeleteModal = ref(false);
+const deleteTarget = ref(null);
+const deleting = ref(false);
+
+function confirmDelete(holiday) {
+    deleteTarget.value = holiday;
+    showDeleteModal.value = true;
+}
+
+function executeDelete() {
+    if (!deleteTarget.value) return;
+    deleting.value = true;
+    router.delete(route('feriados.destroy', deleteTarget.value.id), {
+        onFinish: () => {
+            deleting.value = false;
+            showDeleteModal.value = false;
+            deleteTarget.value = null;
+        },
+    });
+}
+</script>
+
+<template>
+    <AppLayout>
+        <Head title="Feriados" />
+
+        <FadeIn>
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-[#1e293b]">Feriados</h1>
+                    <p class="mt-1 text-sm text-gray-500">Gerencie os feriados e dias especiais</p>
+                </div>
+                <Link
+                    :href="route('feriados.create')"
+                    class="inline-flex items-center gap-2 rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 active:bg-indigo-900"
+                >
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Novo Feriado
+                </Link>
+            </div>
+        </FadeIn>
+
+        <FadeIn :delay="80">
+        <DataTable
+            :columns="columns"
+            :rows="holidays.data"
+            :search-keys="['name']"
+            search-placeholder="Buscar feriado..."
+        >
+            <template #row="{ row }">
+                <td class="px-4 py-3 text-sm font-medium text-gray-900">{{ formatDate(row.date) }}</td>
+                <td class="px-4 py-3 text-sm text-gray-600">{{ row.name }}</td>
+                <td class="px-4 py-3 text-center">
+                    <span
+                        class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                        :class="row.was_open
+                            ? 'bg-emerald-50 text-emerald-700'
+                            : 'bg-gray-100 text-gray-500'"
+                    >
+                        {{ row.was_open ? 'Aberto' : 'Fechado' }}
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <Link
+                            :href="route('feriados.show', row.id)"
+                            class="rounded-md px-2 py-1 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                        >
+                            Ver
+                        </Link>
+                        <Link
+                            :href="route('feriados.edit', row.id)"
+                            class="rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
+                        >
+                            Editar
+                        </Link>
+                        <button
+                            @click="confirmDelete(row)"
+                            class="rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                        >
+                            Excluir
+                        </button>
+                    </div>
+                </td>
+            </template>
+        </DataTable>
+        </FadeIn>
+
+        <DeleteConfirmModal
+            :show="showDeleteModal"
+            :processing="deleting"
+            :message="`Tem certeza que deseja excluir o feriado '${deleteTarget?.name}'?`"
+            @close="showDeleteModal = false"
+            @confirm="executeDelete"
+        />
+    </AppLayout>
+</template>

@@ -1,0 +1,408 @@
+{
+  "base_recipes": [
+    {
+      "name": "Cinnamon Roll",
+      "yield": 10,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 500, "unit": "g"},
+        {"name": "Ovos", "quantity": 2, "unit": "un"},
+        {"name": "Leite", "quantity": 250, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 85, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 5, "unit": "g"},
+        {"name": "Manteiga", "quantity": 80, "unit": "g"},
+        {"name": "Fermento (Dr. Oetker)", "quantity": 5, "unit": "g"},
+        {"name": "Manteiga", "quantity": 45, "unit": "g", "note": "recheio"},
+        {"name": "Açúcar mascavo", "quantity": 45, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 45, "unit": "g", "note": "recheio"},
+        {"name": "Canela em pó", "quantity": 5, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Pão Amanteigado",
+      "yield": 8,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 500, "unit": "g"},
+        {"name": "Ovos", "quantity": 2, "unit": "un"},
+        {"name": "Leite", "quantity": 250, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 75, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 5, "unit": "g"},
+        {"name": "Manteiga", "quantity": 80, "unit": "g"},
+        {"name": "Fermento (Dr. Oetker)", "quantity": 5, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Cookie Classico",
+      "yield": 13,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 300, "unit": "g"},
+        {"name": "Ovos", "quantity": 2, "unit": "un"},
+        {"name": "Chocolate blend (Callebaut)", "quantity": 220, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 160, "unit": "g"},
+        {"name": "Açúcar mascavo", "quantity": 160, "unit": "g"},
+        {"name": "Manteiga", "quantity": 230, "unit": "g"},
+        {"name": "Farinha c/ fermento (Rosa Branca)", "quantity": 200, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 1.25, "unit": "g"},
+        {"name": "Fermento (Royal)", "quantity": 10, "unit": "g"},
+        {"name": "Bicarbonato de sódio", "quantity": 1.25, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Cookie Red Velvet",
+      "yield": 13,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 475, "unit": "g"},
+        {"name": "Ovos", "quantity": 3, "unit": "un"},
+        {"name": "Chocolate branco (Genuine)", "quantity": 220, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 160, "unit": "g"},
+        {"name": "Açúcar mascavo", "quantity": 160, "unit": "g"},
+        {"name": "Manteiga", "quantity": 230, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 1.25, "unit": "g"},
+        {"name": "Fermento (Royal)", "quantity": 15, "unit": "g"},
+        {"name": "Corante vermelho", "quantity": 5, "unit": "g"},
+        {"name": "Cacau em pó (Melken)", "quantity": 25, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Cookie Triple Chocolate",
+      "yield": 13,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 200, "unit": "g"},
+        {"name": "Ovos", "quantity": 3, "unit": "un"},
+        {"name": "Chocolate blend (Callebaut)", "quantity": 220, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 160, "unit": "g"},
+        {"name": "Açúcar mascavo", "quantity": 160, "unit": "g"},
+        {"name": "Manteiga", "quantity": 230, "unit": "g"},
+        {"name": "Farinha c/ fermento (Rosa Branca)", "quantity": 230, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 1.25, "unit": "g"},
+        {"name": "Fermento (Royal)", "quantity": 15, "unit": "g"},
+        {"name": "Bicarbonato de sódio", "quantity": 1.25, "unit": "g"},
+        {"name": "Cacau em pó (Melken)", "quantity": 70, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Cookie Kinder",
+      "yield": 13,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 300, "unit": "g"},
+        {"name": "Ovos", "quantity": 2, "unit": "un"},
+        {"name": "Chocolate blend (Callebaut)", "quantity": 110, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 160, "unit": "g"},
+        {"name": "Açúcar mascavo", "quantity": 160, "unit": "g"},
+        {"name": "Manteiga", "quantity": 230, "unit": "g"},
+        {"name": "Farinha c/ fermento (Rosa Branca)", "quantity": 200, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 1.25, "unit": "g"},
+        {"name": "Fermento (Royal)", "quantity": 10, "unit": "g"},
+        {"name": "Bicarbonato de sódio", "quantity": 1.25, "unit": "g"},
+        {"name": "Chocolate branco (Genuine)", "quantity": 110, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Massa Focaccia",
+      "yield": 3,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 500, "unit": "g"},
+        {"name": "Fermento (Dr. Oetker)", "quantity": 5, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 10, "unit": "g"},
+        {"name": "Azeite", "quantity": 40, "unit": "g"},
+        {"name": "Tomatinho", "quantity": 125, "unit": "g"},
+        {"name": "Azeitona", "quantity": 50, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Pizza Roll",
+      "yield": 9,
+      "is_experimental": true,
+      "ingredients": [
+        {"name": "Farinha (Dona Benta)", "quantity": 400, "unit": "g"},
+        {"name": "Óleo", "quantity": 45, "unit": "g"},
+        {"name": "Leite", "quantity": 100, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 25, "unit": "g"},
+        {"name": "Sal (Sosal)", "quantity": 8, "unit": "g"},
+        {"name": "Fermento (Dr. Oetker)", "quantity": 4, "unit": "g"},
+        {"name": "Mozzarella (Boa Esperança)", "quantity": 250, "unit": "g"},
+        {"name": "Calabresa", "quantity": 200, "unit": "g"}
+      ]
+    }
+  ],
+  "sub_recipes": [
+    {
+      "name": "Topping 3 Queijos",
+      "yield": 3,
+      "ingredients": [
+        {"name": "Parmesão (Boa Esperança)", "quantity": 50, "unit": "g"},
+        {"name": "Mozzarella (Boa Esperança)", "quantity": 100, "unit": "g"},
+        {"name": "Gorgonzola (Cruzília)", "quantity": 35, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Topping Cream Cheese",
+      "yield": 5,
+      "ingredients": [
+        {"name": "Cream cheese", "quantity": 70, "unit": "g"},
+        {"name": "Açúcar de confeiteiro", "quantity": 50, "unit": "g"},
+        {"name": "Leite", "quantity": 20, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Topping Ganache/Geléia",
+      "yield": 2,
+      "ingredients": [
+        {"name": "Chocolate branco (Genuine)", "quantity": 20, "unit": "g"},
+        {"name": "Creme de leite (Camponesa)", "quantity": 20, "unit": "g"},
+        {"name": "Geléia (Queensberry)", "quantity": 30, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Ganache Ninho",
+      "yield": 15,
+      "ingredients": [
+        {"name": "Chocolate branco (Genuine)", "quantity": 200, "unit": "g"},
+        {"name": "Creme de leite (Camponesa)", "quantity": 200, "unit": "g"},
+        {"name": "Ninho", "quantity": 100, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Kinder",
+      "yield": 26,
+      "note": "Adds R$1.95 per unit for Kinder Bueno on top",
+      "ingredients": [
+        {"name": "Kinder Bueno", "quantity": 8, "unit": "un"},
+        {"name": "Creme de leite (Camponesa)", "quantity": 200, "unit": "g"},
+        {"name": "Chocolate branco (Genuine)", "quantity": 150, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Maracujá",
+      "yield": 20,
+      "ingredients": [
+        {"name": "Leite Condensado (Piracanjuba)", "quantity": 395, "unit": "g"},
+        {"name": "Creme de leite (Camponesa)", "quantity": 200, "unit": "g"},
+        {"name": "Maracujá", "quantity": 500, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 60, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Geléia de Maracujá",
+      "yield": 8,
+      "ingredients": [
+        {"name": "Maracujá", "quantity": 800, "unit": "g"},
+        {"name": "Açúcar cristal (Monte Alegre)", "quantity": 120, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Cream Cheese (Red Velvet)",
+      "yield": 26,
+      "ingredients": [
+        {"name": "Leite Condensado (Piracanjuba)", "quantity": 395, "unit": "g"},
+        {"name": "Creme de leite (Camponesa)", "quantity": 200, "unit": "g"},
+        {"name": "Cream cheese", "quantity": 150, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Doce de Leite",
+      "yield": 1,
+      "ingredients": [
+        {"name": "Doce de leite (Viçosa)", "quantity": 15, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Ninhotella",
+      "yield": 1,
+      "ingredients": [
+        {"name": "Manteiga", "quantity": 2, "unit": "g"},
+        {"name": "Ninho", "quantity": 5, "unit": "g"},
+        {"name": "Nutella", "quantity": 15, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Topping Coco",
+      "yield": 1,
+      "is_experimental": true,
+      "ingredients": [
+        {"name": "Leite", "quantity": 40, "unit": "g"},
+        {"name": "Leite Condensado (Piracanjuba)", "quantity": 20, "unit": "g"},
+        {"name": "Coco Ralado", "quantity": 20, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Lotus",
+      "yield": 1,
+      "is_experimental": true,
+      "ingredients": [
+        {"name": "Biscoito Lotus", "quantity": 1, "unit": "un"},
+        {"name": "Pasta Lotus", "quantity": 20, "unit": "g"}
+      ]
+    },
+    {
+      "name": "Recheio Nutella",
+      "yield": 1,
+      "ingredients": [
+        {"name": "Nutella", "quantity": 20, "unit": "g"}
+      ]
+    }
+  ],
+  "products": [
+    {
+      "name": "Cinnamon Puro",
+      "category": "Pães Doces",
+      "base_recipe": "Cinnamon Roll",
+      "sub_recipes": [],
+      "packaging": "Embalagem Pao Doce",
+      "sale_price": 4.00,
+      "ingredient_cost": 1.62,
+      "cmv": 2.09
+    },
+    {
+      "name": "Cinnamon Cream Cheese",
+      "category": "Pães Doces",
+      "base_recipe": "Cinnamon Roll",
+      "sub_recipes": ["Topping Cream Cheese"],
+      "packaging": "Embalagem Pao Doce",
+      "sale_price": 5.00,
+      "ingredient_cost": 2.96,
+      "cmv": 3.43
+    },
+    {
+      "name": "Cinnamon Doce de Leite",
+      "category": "Pães Doces",
+      "base_recipe": "Cinnamon Roll",
+      "sub_recipes": ["Topping Ganache/Geléia", "Recheio Doce de Leite"],
+      "packaging": "Embalagem Pao Doce",
+      "sale_price": 5.50,
+      "ingredient_cost": 3.22,
+      "cmv": 3.69
+    },
+    {
+      "name": "Cinnamon Nutella",
+      "category": "Pães Doces",
+      "base_recipe": "Cinnamon Roll",
+      "sub_recipes": ["Ganache Ninho", "Recheio Nutella"],
+      "packaging": "Embalagem Pao Doce",
+      "sale_price": 7.50,
+      "ingredient_cost": 3.62,
+      "cmv": 4.09
+    },
+    {
+      "name": "Amanteigado Ninhotella",
+      "category": "Pães Doces",
+      "base_recipe": "Pão Amanteigado",
+      "sub_recipes": ["Recheio Ninhotella"],
+      "packaging": "Embalagem Pao Doce",
+      "sale_price": 6.50,
+      "ingredient_cost": 3.06,
+      "cmv": 3.53
+    },
+    {
+      "name": "Cookie Clássico",
+      "category": "Cookies",
+      "base_recipe": "Cookie Classico",
+      "sub_recipes": [],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 6.50,
+      "ingredient_cost": 3.44,
+      "cmv": 3.73
+    },
+    {
+      "name": "Cookie Red Velvet",
+      "category": "Cookies",
+      "base_recipe": "Cookie Red Velvet",
+      "sub_recipes": ["Recheio Cream Cheese (Red Velvet)"],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 9.50,
+      "ingredient_cost": 4.37,
+      "cmv": 4.66
+    },
+    {
+      "name": "Cookie Nutella",
+      "category": "Cookies",
+      "base_recipe": "Cookie Classico",
+      "sub_recipes": ["Recheio Nutella"],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 10.50,
+      "ingredient_cost": 5.44,
+      "cmv": 5.73
+    },
+    {
+      "name": "Cookie Ninhotella",
+      "category": "Cookies",
+      "base_recipe": "Cookie Kinder",
+      "sub_recipes": ["Ganache Ninho"],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 12.00,
+      "ingredient_cost": 5.71,
+      "cmv": 6.00
+    },
+    {
+      "name": "Cookie Triplo Chocolate",
+      "category": "Cookies",
+      "base_recipe": "Cookie Triple Chocolate",
+      "sub_recipes": [],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 14.00,
+      "ingredient_cost": 6.43,
+      "cmv": 6.72
+    },
+    {
+      "name": "Cookie Choco Maracujá",
+      "category": "Cookies",
+      "base_recipe": "Cookie Classico",
+      "sub_recipes": ["Recheio Maracujá", "Geléia de Maracujá"],
+      "packaging": "Embalagem Cookie",
+      "sale_price": 12.00,
+      "ingredient_cost": 7.07,
+      "cmv": 7.36
+    },
+    {
+      "name": "Focaccia Clássica",
+      "category": "Pães Salgados",
+      "base_recipe": "Massa Focaccia",
+      "sub_recipes": [],
+      "packaging": "Embalagem Focaccia",
+      "sale_price": 10.50,
+      "ingredient_cost": 5.06,
+      "cmv": 5.45
+    },
+    {
+      "name": "Focaccia 3 Queijos",
+      "category": "Pães Salgados",
+      "base_recipe": "Massa Focaccia",
+      "sub_recipes": ["Topping 3 Queijos"],
+      "packaging": "Embalagem Focaccia",
+      "sale_price": 22.00,
+      "ingredient_cost": 9.02,
+      "cmv": 9.41
+    }
+  ],
+  "fixed_costs": [
+    {"name": "Pró-labore", "monthly_cost": 1550.00, "note": "Remuneração pela produção"},
+    {"name": "Aluguel", "monthly_cost": 600.00, "note": "Imóvel próprio - valor estimado"},
+    {"name": "Gás", "monthly_cost": 210.00, "note": "2 botijões/mês"},
+    {"name": "Produtos de limpeza", "monthly_cost": 125.00, "note": "Papel toalha, detergente, álcool, etc."},
+    {"name": "Luz", "monthly_cost": 120.00, "note": "Energia elétrica"},
+    {"name": "Água", "monthly_cost": 75.00, "note": "Conta de água"},
+    {"name": "MEI", "monthly_cost": 75.90, "note": "Contribuição mensal obrigatória"},
+    {"name": "Saco kraft", "monthly_cost": 60.00, "note": "Embalagens de entrega"},
+    {"name": "Papel manteiga", "monthly_cost": 60.00, "note": "3 rolos/mês"},
+    {"name": "Adesivos", "monthly_cost": 55.00, "note": "Identidade visual"},
+    {"name": "Sacolas", "monthly_cost": 40.00, "note": "Sacolas de retirada"}
+  ],
+  "sales_last_30_days": [
+    {"product": "Cookie Red Velvet", "quantity": 112, "sale_price": 9.50},
+    {"product": "Cookie Nutella", "quantity": 61, "sale_price": 10.50},
+    {"product": "Cookie Maracujá", "quantity": 32, "sale_price": 12.00},
+    {"product": "Cookie Clássico", "quantity": 40, "sale_price": 6.50},
+    {"product": "Cookie Triplo Novo", "quantity": 17, "sale_price": 14.00},
+    {"product": "Cookie Ninhotella", "quantity": 10, "sale_price": 12.00},
+    {"product": "Cookie Triplo Antigo", "quantity": 9, "sale_price": 8.00},
+    {"product": "Cinnamon Puro", "quantity": 26, "sale_price": 4.00},
+    {"product": "Focaccia 3 Queijos", "quantity": 4, "sale_price": 22.00},
+    {"product": "Focaccia Clássica", "quantity": 7, "sale_price": 10.50},
+    {"product": "Amanteigado Ninhotella", "quantity": 7, "sale_price": 6.50}
+  ],
+  "pricing_config": {
+    "total_fixed_costs": 3010.90,
+    "card_machine_fee_percent": 3.2,
+    "target_margin_percent": 55.0,
+    "real_monthly_revenue": 6835.50
+  }
+}

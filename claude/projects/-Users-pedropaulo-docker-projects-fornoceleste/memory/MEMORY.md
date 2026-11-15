@@ -1,0 +1,2 @@
+- [User profile](user_profile.md) — Pedro, bakery owner, first app, transitioning from spreadsheets
+- [Project overview](project_overview.md) — Forno Celeste: bakery management (inventory, sales, waste, finances)

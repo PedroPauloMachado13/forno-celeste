@@ -26,3 +26,4 @@ CLAUDE.local.md
 .claude/settings.local.json
 .claude/projects/
 /database/database.sqlite
+/.ssh/

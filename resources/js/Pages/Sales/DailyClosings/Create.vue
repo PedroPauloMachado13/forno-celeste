@@ -104,7 +104,7 @@ function submit() {
             </div>
         </FadeIn>
 
-        <form @submit.prevent="submit" class="grid gap-6 lg:grid-cols-3">
+        <form @submit.prevent="submit" class="grid gap-6 pb-24 lg:grid-cols-3 lg:pb-0">
             <!-- Left column: form fields -->
             <div class="lg:col-span-2 space-y-6">
                 <FadeIn :delay="80">
@@ -183,9 +183,9 @@ function submit() {
                         <div
                             v-for="(withdrawal, index) in form.withdrawals"
                             :key="index"
-                            class="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50/50 p-3"
+                            class="flex flex-col gap-2 rounded-lg border border-gray-100 bg-gray-50/50 p-3 sm:flex-row sm:items-start sm:gap-3"
                         >
-                            <div class="w-40 shrink-0">
+                            <div class="w-full sm:w-40 sm:shrink-0">
                                 <MoneyInput
                                     v-model="withdrawal.amount_cents"
                                     :id="`withdrawal_amount_${index}`"
@@ -207,7 +207,7 @@ function submit() {
                             <button
                                 type="button"
                                 @click="removeWithdrawal(index)"
-                                class="mt-1 rounded-lg p-1.5 text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                                class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center self-end rounded-lg text-gray-400 transition hover:bg-red-50 hover:text-red-600 sm:self-auto sm:mt-1"
                             >
                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -245,7 +245,7 @@ function submit() {
                         <div
                             v-for="(waste, index) in form.wastes"
                             :key="index"
-                            class="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50/50 p-3"
+                            class="flex flex-col gap-2 rounded-lg border border-gray-100 bg-gray-50/50 p-3 sm:flex-row sm:items-start sm:gap-3"
                         >
                             <div class="flex-1">
                                 <select
@@ -262,29 +262,31 @@ function submit() {
                                     {{ form.errors[`wastes.${index}.product_id`] }}
                                 </p>
                             </div>
-                            <div class="w-24 shrink-0">
-                                <input
-                                    v-model.number="waste.quantity"
-                                    type="number"
-                                    min="1"
-                                    max="9999"
-                                    placeholder="Qtd"
-                                    class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-center shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                                    :class="{ 'border-red-400': form.errors[`wastes.${index}.quantity`] }"
-                                />
-                                <p v-if="form.errors[`wastes.${index}.quantity`]" class="mt-1 text-xs text-red-600">
-                                    {{ form.errors[`wastes.${index}.quantity`] }}
-                                </p>
-                            </div>
-                            <div class="w-28 shrink-0 flex items-center justify-end">
-                                <span class="text-sm font-medium text-gray-600">
-                                    {{ formatMoney(wasteLineCosts[index] || 0) }}
-                                </span>
+                            <div class="flex items-center gap-3 sm:contents">
+                                <div class="w-24 shrink-0">
+                                    <input
+                                        v-model.number="waste.quantity"
+                                        type="number"
+                                        min="1"
+                                        max="9999"
+                                        placeholder="Qtd"
+                                        class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-center shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                                        :class="{ 'border-red-400': form.errors[`wastes.${index}.quantity`] }"
+                                    />
+                                    <p v-if="form.errors[`wastes.${index}.quantity`]" class="mt-1 text-xs text-red-600">
+                                        {{ form.errors[`wastes.${index}.quantity`] }}
+                                    </p>
+                                </div>
+                                <div class="flex-1 sm:w-28 sm:shrink-0 sm:flex-initial flex items-center justify-end">
+                                    <span class="text-sm font-medium text-gray-600">
+                                        {{ formatMoney(wasteLineCosts[index] || 0) }}
+                                    </span>
+                                </div>
                             </div>
                             <button
                                 type="button"
                                 @click="removeWaste(index)"
-                                class="mt-1 rounded-lg p-1.5 text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                                class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center self-end rounded-lg text-gray-400 transition hover:bg-red-50 hover:text-red-600 sm:self-auto sm:mt-1"
                             >
                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -295,9 +297,9 @@ function submit() {
                 </div>
                 </FadeIn>
 
-                <!-- Actions -->
+                <!-- Desktop actions -->
                 <FadeIn :delay="320">
-                <div class="flex items-center justify-end gap-3">
+                <div class="hidden items-center justify-end gap-3 sm:flex">
                     <Link
                         :href="route('fechamentos.index')"
                         class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50"
@@ -368,6 +370,23 @@ function submit() {
                 </div>
             </div>
             </FadeIn>
+
+            <!-- Mobile sticky summary bar -->
+            <div class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white px-4 py-3 shadow-lg lg:hidden">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-gray-500">Receita Total</p>
+                        <p class="text-lg font-bold text-indigo-700">{{ formatMoney(totalRevenueCents) }}</p>
+                    </div>
+                    <button
+                        type="submit"
+                        :disabled="form.processing"
+                        class="rounded-lg bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 disabled:opacity-50"
+                    >
+                        {{ form.processing ? 'Salvando...' : 'Salvar' }}
+                    </button>
+                </div>
+            </div>
         </form>
     </AppLayout>
 </template>

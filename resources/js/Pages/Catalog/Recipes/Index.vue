@@ -57,7 +57,7 @@ function executeDelete() {
         <Head title="Receitas" />
 
         <FadeIn>
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between gap-3">
                 <div>
                     <h1 class="text-2xl font-bold text-[#1e293b]">Receitas</h1>
                     <p class="mt-1 text-sm text-gray-500">Gerencie as receitas da padaria</p>
@@ -69,7 +69,7 @@ function executeDelete() {
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Nova Receita
+                    <span class="hidden sm:inline">Nova Receita</span>
                 </Link>
             </div>
         </FadeIn>
@@ -105,6 +105,31 @@ function executeDelete() {
             :search-keys="['name']"
             search-placeholder="Buscar receita..."
         >
+            <template #mobile-row="{ row }">
+                <Link
+                    :href="route('receitas.show', row.id)"
+                    class="block rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition active:bg-gray-50"
+                >
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="truncate font-medium text-gray-900">{{ row.name }}</span>
+                            <span
+                                v-if="row.is_experimental"
+                                class="shrink-0 rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-700"
+                            >
+                                Experimental
+                            </span>
+                        </div>
+                        <span class="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                            {{ typeLabels[row.type] || row.type }}
+                        </span>
+                    </div>
+                    <div class="mt-2 flex items-center gap-4 text-xs text-gray-500">
+                        <span>Rende: {{ row.yield_quantity }}</span>
+                        <span>{{ row.ingredients?.length || 0 }} ingredientes</span>
+                    </div>
+                </Link>
+            </template>
             <template #row="{ row }">
                 <td class="px-4 py-3 text-sm font-medium text-gray-900">
                     <div class="flex items-center gap-2">
@@ -124,19 +149,19 @@ function executeDelete() {
                     <div class="flex items-center justify-end gap-2">
                         <Link
                             :href="route('receitas.show', row.id)"
-                            class="rounded-md px-2 py-1 text-xs font-medium text-blue-600 transition hover:bg-blue-50"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-2 py-1 text-xs font-medium text-blue-600 transition hover:bg-blue-50"
                         >
                             Ver
                         </Link>
                         <Link
                             :href="route('receitas.edit', row.id)"
-                            class="rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
                         >
                             Editar
                         </Link>
                         <button
                             @click="confirmDelete(row)"
-                            class="rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
                         >
                             Excluir
                         </button>

@@ -41,7 +41,7 @@ function executeDelete() {
         <Head title="Fechamentos Diarios" />
 
         <FadeIn>
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between gap-3">
                 <h1 class="text-2xl font-bold text-[#1e293b]">Fechamentos Diarios</h1>
                 <Link
                     :href="route('fechamentos.create')"
@@ -50,7 +50,7 @@ function executeDelete() {
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Novo Fechamento
+                    <span class="hidden sm:inline">Novo Fechamento</span>
                 </Link>
             </div>
         </FadeIn>
@@ -69,7 +69,54 @@ function executeDelete() {
                     Registrar primeiro fechamento
                 </Link>
             </div>
-            <table v-else class="min-w-full divide-y divide-gray-200">
+
+            <template v-else>
+            <!-- Mobile cards -->
+            <div class="space-y-3 p-4 sm:hidden">
+                <div
+                    v-for="closing in closings.data"
+                    :key="'mobile-' + closing.id"
+                    class="cursor-pointer rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition active:bg-gray-50"
+                    @click="router.visit(route('fechamentos.show', closing.id))"
+                >
+                    <div class="flex items-center justify-between">
+                        <span class="font-semibold text-gray-900">{{ formatDate(closing.closing_date) }}</span>
+                        <span class="text-lg font-bold text-indigo-700">{{ formatMoney(closing.total_revenue_cents) }}</span>
+                    </div>
+                    <div class="mt-2 flex items-center gap-4 text-sm text-gray-500">
+                        <span>Cartao: {{ formatMoney(closing.card_sales_cents) }}</span>
+                        <span>Dinheiro: {{ formatMoney(closing.cash_sales_cents) }}</span>
+                    </div>
+                    <div class="mt-2 flex items-center justify-between">
+                        <span v-if="closing.total_waste_cents > 0" class="text-xs font-medium text-red-600">
+                            Perdas: {{ formatMoney(closing.total_waste_cents) }}
+                        </span>
+                        <span v-else></span>
+                        <div class="flex items-center gap-1" @click.stop>
+                            <Link
+                                :href="route('fechamentos.edit', closing.id)"
+                                class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-gray-400 transition hover:bg-indigo-50 hover:text-indigo-700"
+                            >
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </Link>
+                            <button
+                                @click="confirmDelete(closing)"
+                                class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                            >
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop table -->
+            <div class="hidden sm:block">
+            <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Data</th>
@@ -106,7 +153,7 @@ function executeDelete() {
                             <div class="flex items-center justify-end gap-2">
                                 <Link
                                     :href="route('fechamentos.edit', closing.id)"
-                                    class="rounded-lg p-1.5 text-gray-400 transition hover:bg-indigo-50 hover:text-indigo-700"
+                                    class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-1.5 text-gray-400 transition hover:bg-indigo-50 hover:text-indigo-700"
                                 >
                                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -114,7 +161,7 @@ function executeDelete() {
                                 </Link>
                                 <button
                                     @click="confirmDelete(closing)"
-                                    class="rounded-lg p-1.5 text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                                    class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-1.5 text-gray-400 transition hover:bg-red-50 hover:text-red-600"
                                 >
                                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -125,6 +172,8 @@ function executeDelete() {
                     </tr>
                 </tbody>
             </table>
+            </div>
+            </template>
         </div>
         </FadeIn>
 
@@ -136,7 +185,7 @@ function executeDelete() {
                         <Link
                             v-if="link.url"
                             :href="link.url"
-                            class="rounded-lg px-3 py-2 text-sm transition"
+                            class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg px-3 py-2 text-sm transition"
                             :class="link.active
                                 ? 'bg-indigo-700 text-white font-semibold'
                                 : 'text-gray-500 hover:bg-gray-100'"
@@ -144,7 +193,7 @@ function executeDelete() {
                         />
                         <span
                             v-else
-                            class="rounded-lg px-3 py-2 text-sm text-gray-300"
+                            class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-300"
                             v-html="link.label"
                         />
                     </template>

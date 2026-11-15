@@ -115,7 +115,7 @@ function isGroupActive(group) {
 
         <!-- Sidebar -->
         <aside
-            class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-[#1a1a2e] transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto"
+            class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-[#1a1a2e] pb-[env(safe-area-inset-bottom)] transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
         >
             <!-- Logo -->
@@ -277,7 +277,7 @@ function isGroupActive(group) {
         <!-- Main content -->
         <div class="flex flex-1 flex-col">
             <!-- Top bar (mobile) -->
-            <header class="flex h-16 items-center gap-4 border-b border-gray-200 bg-white px-4 shadow-sm lg:hidden">
+            <header class="flex h-16 items-center gap-4 border-b border-gray-200 bg-white px-4 pt-[env(safe-area-inset-top)] shadow-sm lg:hidden">
                 <button
                     @click="sidebarOpen = true"
                     class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"

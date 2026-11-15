@@ -59,7 +59,19 @@ const filteredRows = computed(() => {
             </div>
         </div>
 
-        <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+        <!-- Mobile cards (when mobile-row slot is provided) -->
+        <div v-if="$slots['mobile-row']" class="sm:hidden">
+            <div v-if="filteredRows.length === 0" class="overflow-hidden rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+                <p class="text-sm text-gray-400">{{ emptyMessage }}</p>
+            </div>
+            <div v-else class="space-y-3">
+                <div v-for="(row, index) in filteredRows" :key="'mobile-' + (row.id || index)">
+                    <slot name="mobile-row" :row="row" :index="index" />
+                </div>
+            </div>
+        </div>
+
+        <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm" :class="{ 'hidden sm:block': $slots['mobile-row'] }">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">

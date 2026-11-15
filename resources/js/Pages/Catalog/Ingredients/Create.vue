@@ -47,7 +47,7 @@ function submit() {
 
         <FadeIn :delay="80">
         <div class="mx-auto max-w-2xl">
-            <form @submit.prevent="submit" class="space-y-6 rounded-xl bg-white p-6 shadow-sm">
+            <form @submit.prevent="submit" class="space-y-6 rounded-xl bg-white p-6 pb-20 shadow-sm sm:pb-6">
                 <!-- Nome -->
                 <div>
                     <label for="name" class="mb-1 block text-sm font-medium text-gray-700">Nome</label>
@@ -110,7 +110,7 @@ function submit() {
                 </div>
 
                 <!-- Actions -->
-                <div class="flex items-center justify-end gap-3 border-t border-gray-100 pt-4">
+                <div class="hidden items-center justify-end gap-3 border-t border-gray-100 pt-4 sm:flex">
                     <Link
                         :href="route('ingredientes.index')"
                         class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50"
@@ -121,6 +121,17 @@ function submit() {
                         type="submit"
                         :disabled="form.processing"
                         class="rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 disabled:opacity-50"
+                    >
+                        {{ form.processing ? 'Salvando...' : 'Salvar Ingrediente' }}
+                    </button>
+                </div>
+
+                <!-- Mobile sticky submit bar -->
+                <div class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white p-4 shadow-lg sm:hidden">
+                    <button
+                        type="submit"
+                        :disabled="form.processing"
+                        class="w-full rounded-lg bg-indigo-700 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 disabled:opacity-50"
                     >
                         {{ form.processing ? 'Salvando...' : 'Salvar Ingrediente' }}
                     </button>

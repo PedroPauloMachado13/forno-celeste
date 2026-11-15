@@ -239,33 +239,35 @@ const upcomingBillsList = computed(() => {
         <!-- Period selector -->
         <FadeIn :delay="80">
         <div class="mb-6 rounded-xl bg-white p-4 shadow-sm">
-            <div class="flex flex-wrap items-end gap-4">
-                <div>
-                    <label for="date_from" class="mb-1 block text-xs font-medium text-gray-500">De</label>
-                    <input
-                        id="date_from"
-                        v-model="dateFrom"
-                        type="date"
-                        @change="applyFilter"
-                        class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                    />
-                </div>
-                <div>
-                    <label for="date_to" class="mb-1 block text-xs font-medium text-gray-500">Ate</label>
-                    <input
-                        id="date_to"
-                        v-model="dateTo"
-                        type="date"
-                        @change="applyFilter"
-                        class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-                    />
+            <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:gap-4">
+                <div class="grid grid-cols-2 gap-3 sm:contents">
+                    <div>
+                        <label for="date_from" class="mb-1 block text-xs font-medium text-gray-500">De</label>
+                        <input
+                            id="date_from"
+                            v-model="dateFrom"
+                            type="date"
+                            @change="applyFilter"
+                            class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none sm:w-auto"
+                        />
+                    </div>
+                    <div>
+                        <label for="date_to" class="mb-1 block text-xs font-medium text-gray-500">Ate</label>
+                        <input
+                            id="date_to"
+                            v-model="dateTo"
+                            type="date"
+                            @change="applyFilter"
+                            class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none sm:w-auto"
+                        />
+                    </div>
                 </div>
                 <div class="flex gap-2">
                     <button
                         v-for="preset in presets"
                         :key="preset.label"
                         @click="applyPreset(preset)"
-                        class="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-medium text-gray-600 transition hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+                        class="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-medium text-gray-600 transition hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 sm:flex-initial"
                     >
                         {{ preset.label }}
                     </button>

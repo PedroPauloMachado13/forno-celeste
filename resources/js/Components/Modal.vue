@@ -47,7 +47,7 @@ const maxWidthClass = {
                 >
                     <div
                         v-if="show"
-                        class="relative w-full rounded-xl bg-white p-6 shadow-xl"
+                        class="relative w-full max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl"
                         :class="maxWidthClass[maxWidth] || 'max-w-md'"
                     >
                         <slot />

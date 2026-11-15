@@ -369,7 +369,7 @@ const forecastBarColor = computed(() => {
                                         <span class="text-sm font-semibold text-gray-900">{{ formatMoney(bill.amount_cents) }}</span>
                                         <button
                                             @click="payBill(bill.id)"
-                                            class="rounded-lg bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-100"
+                                            class="rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-100"
                                         >
                                             Pagar
                                         </button>

@@ -114,7 +114,7 @@ function submit() {
             </div>
         </FadeIn>
 
-        <form @submit.prevent="submit" class="grid gap-6 lg:grid-cols-3">
+        <form @submit.prevent="submit" class="grid gap-6 pb-20 lg:grid-cols-3 lg:pb-0">
             <!-- Left column: form fields -->
             <div class="lg:col-span-2 space-y-6">
                 <FadeIn :delay="80">
@@ -232,7 +232,7 @@ function submit() {
 
                 <!-- Actions -->
                 <FadeIn :delay="240">
-                <div class="flex items-center justify-end gap-3">
+                <div class="hidden items-center justify-end gap-3 sm:flex">
                     <Link
                         :href="route('produtos.show', p.id)"
                         class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50"
@@ -289,6 +289,17 @@ function submit() {
                 </div>
             </div>
             </FadeIn>
+
+            <!-- Mobile sticky submit bar -->
+            <div class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white p-4 shadow-lg sm:hidden">
+                <button
+                    type="submit"
+                    :disabled="form.processing"
+                    class="w-full rounded-lg bg-indigo-700 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 disabled:opacity-50"
+                >
+                    {{ form.processing ? 'Salvando...' : 'Atualizar Produto' }}
+                </button>
+            </div>
         </form>
     </AppLayout>
 </template>

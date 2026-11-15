@@ -148,7 +148,7 @@ function executeDelete() {
         <Head title="Contas a Pagar" />
 
         <FadeIn>
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between gap-3">
                 <div>
                     <h1 class="text-2xl font-bold text-[#1e293b]">Contas a Pagar</h1>
                     <p class="mt-1 text-sm text-gray-500">Gerencie as contas e pagamentos mensais</p>
@@ -160,7 +160,7 @@ function executeDelete() {
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Nova Conta
+                    <span class="hidden sm:inline">Nova Conta</span>
                 </Link>
             </div>
         </FadeIn>
@@ -170,7 +170,7 @@ function executeDelete() {
             <div class="mb-6 flex items-center justify-center gap-4">
                 <button
                     @click="changeMonth(-1)"
-                    class="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+                    class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
                 >
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -181,7 +181,7 @@ function executeDelete() {
                 </span>
                 <button
                     @click="changeMonth(1)"
-                    class="rounded-lg p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+                    class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
                 >
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -241,19 +241,19 @@ function executeDelete() {
                         <div class="flex items-center gap-2">
                             <Link
                                 :href="route('contas.edit', bill.id)"
-                                class="rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
+                                class="inline-flex min-h-[44px] items-center rounded-md px-3 py-2 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
                             >
                                 Editar
                             </Link>
                             <button
                                 @click="payBill(bill)"
-                                class="rounded-md bg-emerald-600 px-3 py-1 text-xs font-semibold text-white transition hover:bg-emerald-700"
+                                class="inline-flex min-h-[44px] items-center rounded-md bg-emerald-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
                             >
                                 Pagar
                             </button>
                             <button
                                 @click="confirmDelete(bill)"
-                                class="rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                                class="inline-flex min-h-[44px] items-center rounded-md px-3 py-2 text-xs font-medium text-red-600 transition hover:bg-red-50"
                             >
                                 Excluir
                             </button>
@@ -283,6 +283,38 @@ function executeDelete() {
                 :search-keys="['description']"
                 search-placeholder="Buscar conta paga..."
             >
+                <template #mobile-row="{ row }">
+                    <Link
+                        :href="route('contas.show', row.id)"
+                        class="block rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition active:bg-gray-50"
+                    >
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0 flex-1">
+                                <p class="truncate text-sm font-semibold text-gray-900">{{ row.description }}</p>
+                                <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                                    <span
+                                        class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                                        :class="billTypeBadgeClass(row.bill_type)"
+                                    >
+                                        {{ row.bill_type_label || 'Outro' }}
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                                        :class="statusClass(row.status)"
+                                    >
+                                        {{ statusLabel(row.status) }}
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="text-sm font-bold text-gray-900">{{ formatMoney(row.amount_cents) }}</p>
+                        </div>
+                        <div class="mt-2 flex items-center gap-4 text-xs text-gray-500">
+                            <span v-if="row.fixed_cost">{{ row.fixed_cost.name }}</span>
+                            <span>{{ formatRefMonth(row.reference_month) }}</span>
+                            <span>{{ formatDate(row.due_date) }}</span>
+                        </div>
+                    </Link>
+                </template>
                 <template #row="{ row }">
                     <td class="px-4 py-3 text-sm font-medium text-gray-900">{{ row.description }}</td>
                     <td class="px-4 py-3 text-center">

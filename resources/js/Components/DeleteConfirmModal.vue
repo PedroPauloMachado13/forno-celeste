@@ -34,18 +34,18 @@ const emit = defineEmits(['close', 'confirm']);
             </div>
             <h3 class="mb-2 text-lg font-semibold text-gray-900">{{ title }}</h3>
             <p class="mb-6 text-sm text-gray-500">{{ message }}</p>
-            <div class="flex justify-center gap-3">
+            <div class="flex flex-col-reverse gap-2 sm:flex-row sm:justify-center sm:gap-3">
                 <button
                     @click="emit('close')"
                     :disabled="processing"
-                    class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 sm:w-auto sm:py-2"
                 >
                     Cancelar
                 </button>
                 <button
                     @click="emit('confirm')"
                     :disabled="processing"
-                    class="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-red-700 disabled:opacity-50"
+                    class="w-full rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-red-700 disabled:opacity-50 sm:w-auto sm:py-2"
                 >
                     {{ processing ? 'Excluindo...' : 'Excluir' }}
                 </button>

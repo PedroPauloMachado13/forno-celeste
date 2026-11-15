@@ -43,7 +43,7 @@ function executeDelete() {
         <Head title="Categorias" />
 
         <FadeIn>
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between gap-3">
                 <div>
                     <h1 class="text-2xl font-bold text-[#1e293b]">Categorias</h1>
                     <p class="mt-1 text-sm text-gray-500">Gerencie as categorias de produtos</p>
@@ -55,7 +55,7 @@ function executeDelete() {
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Nova Categoria
+                    <span class="hidden sm:inline">Nova Categoria</span>
                 </Link>
             </div>
         </FadeIn>

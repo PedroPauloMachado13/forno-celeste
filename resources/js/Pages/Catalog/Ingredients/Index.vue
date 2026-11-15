@@ -58,7 +58,7 @@ function executeDelete() {
         <Head title="Ingredientes" />
 
         <FadeIn>
-            <div class="mb-6 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between gap-3">
                 <div>
                     <h1 class="text-2xl font-bold text-[#1e293b]">Ingredientes</h1>
                     <p class="mt-1 text-sm text-gray-500">Gerencie os ingredientes da padaria</p>
@@ -70,7 +70,7 @@ function executeDelete() {
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Novo Ingrediente
+                    <span class="hidden sm:inline">Novo Ingrediente</span>
                 </Link>
             </div>
         </FadeIn>
@@ -82,6 +82,32 @@ function executeDelete() {
             :search-keys="['name']"
             search-placeholder="Buscar ingrediente..."
         >
+            <template #mobile-row="{ row }">
+                <div class="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+                    <div class="flex items-start justify-between gap-2">
+                        <span class="font-medium text-gray-900">{{ row.name }}</span>
+                        <span class="text-sm font-semibold text-gray-900">{{ formatMoney(row.package_cost_cents) }}</span>
+                    </div>
+                    <div class="mt-2 flex items-center gap-3 text-xs text-gray-500">
+                        <span>{{ row.package_quantity }} {{ row.unit }}</span>
+                        <span>{{ formatCostPerUnit(row.cost_per_unit_cents) }}/{{ row.unit }}</span>
+                    </div>
+                    <div class="mt-3 flex items-center justify-end gap-2">
+                        <Link
+                            :href="route('ingredientes.edit', row.id)"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-3 py-2 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
+                        >
+                            Editar
+                        </Link>
+                        <button
+                            @click="confirmDelete(row)"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-3 py-2 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                        >
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </template>
             <template #row="{ row }">
                 <td class="px-4 py-3 text-sm font-medium text-gray-900">{{ row.name }}</td>
                 <td class="px-4 py-3 text-right text-sm text-gray-600">{{ row.package_quantity }}</td>
@@ -92,13 +118,13 @@ function executeDelete() {
                     <div class="flex items-center justify-end gap-2">
                         <Link
                             :href="route('ingredientes.edit', row.id)"
-                            class="rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-2 py-1 text-xs font-medium text-indigo-600 transition hover:bg-indigo-50"
                         >
                             Editar
                         </Link>
                         <button
                             @click="confirmDelete(row)"
-                            class="rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                            class="inline-flex min-h-[44px] items-center rounded-md px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
                         >
                             Excluir
                         </button>
@@ -116,7 +142,7 @@ function executeDelete() {
                         <Link
                             v-if="link.url"
                             :href="link.url"
-                            class="rounded-lg px-3 py-2 text-sm transition"
+                            class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg px-3 py-2 text-sm transition"
                             :class="link.active
                                 ? 'bg-indigo-700 text-white font-semibold'
                                 : 'text-gray-500 hover:bg-gray-100'"
@@ -124,7 +150,7 @@ function executeDelete() {
                         />
                         <span
                             v-else
-                            class="rounded-lg px-3 py-2 text-sm text-gray-300"
+                            class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-300"
                             v-html="link.label"
                         />
                     </template>

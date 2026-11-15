@@ -16,9 +16,10 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             cd ~/forno-celeste
+            git config --global --add safe.directory /home/ubuntu/forno-celeste
             git pull origin main
-            docker compose build --no-cache app
-            docker compose up -d
+            docker compose up -d --build
+            docker compose exec -T --user root app chown -R www-data:www-data /var/www/html
             docker compose exec -T app composer install --no-dev --optimize-autoloader
             docker compose exec -T app php artisan migrate --force
             docker compose exec -T app php artisan optimize
